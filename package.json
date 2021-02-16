@@ -1,0 +1,32 @@
+{
+    "name": "@cloudactive/slick-fits",
+    "description": "KeystoneJS monorepo for all the @keystonejs / @arch-ui (and more) packages. Powered by Yarn.",
+    "private": true,
+    "version": "0.0.0",
+    "author": "The KeystoneJS Development Team",
+    "license": "MIT",
+    "repository": "https://github.com/keystonejs/keystone",
+    "homepage": "https://github.com/keystonejs/keystone",
+    "workspaces": {
+      "packages": [
+        "backend",
+        "frontend"
+      ]
+    },
+    "dependencies": {
+        "@babel/preset-react": "^7.12.13",
+        "@babel/preset-typescript": "^7.12.16"
+    },
+    "resolutions": {
+      "babel-plugin-remove-graphql-queries": "2.7.2",
+      "graphql-upload": "^11.0.0",
+      "gatsby-cli": "2.7.15",
+      "gatsby-link": "2.2.2",
+      "gatsby-plugin-page-creator": "2.1.5",
+      "react":"^17.0.1"
+    },
+    "engines": {
+      "node": ">=10.0.0"
+    }
+  }
+  
