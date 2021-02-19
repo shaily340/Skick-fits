@@ -11,6 +11,7 @@ const CREATE_PRODUCT_MUTATION = gql`
     # Which variables are getting passed in? And What types are they
     $name: String!
     $description: String!
+    $category: String
     $price: Int!
     $image: Upload
   ) {
@@ -19,6 +20,7 @@ const CREATE_PRODUCT_MUTATION = gql`
         name: $name
         description: $description
         price: $price
+        category: $category
         status: "AVAILABLE"
         photo: { create: { image: $image, altText: $name } }
       }
@@ -27,6 +29,7 @@ const CREATE_PRODUCT_MUTATION = gql`
       price
       description
       name
+      category
     }
   }
 `;
@@ -37,6 +40,7 @@ export default function CreateProduct() {
     name: 'Nice Shoes',
     price: 34234,
     description: 'These are the best shoes!',
+    category:'Garments',
   });
   const [createProduct, { loading, error, data }] = useMutation(
     CREATE_PRODUCT_MUTATION,
@@ -102,7 +106,17 @@ export default function CreateProduct() {
             onChange={handleChange}
           />
         </label>
-
+        <label htmlFor="Category">
+          Category
+          <select id="category" name="category" placeholder="Category" value={inputs.category}
+          onChange={handleChange} >
+            <option value="garments">Garments</option>
+            <option value="home-decor">Home Decor</option>
+            <option value="electronics">Electronics</option>
+            <option value="accessories">Accessories</option>
+            <option value="automobile">Automobile</option>
+          </select>
+        </label>
         <button type="submit">+ Add Product</button>
       </fieldset>
     </Form>

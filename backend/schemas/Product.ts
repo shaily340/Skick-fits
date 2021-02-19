@@ -16,6 +16,7 @@ export const Product = list({
         displayMode: 'textarea',
       },
     }),
+    category: text(),
     photo: relationship({
       ref: 'ProductImage.product',
       ui: {

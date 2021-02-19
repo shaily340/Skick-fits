@@ -23,6 +23,7 @@ const SINGLE_ITEM_QUERY = gql`
     Product(where: { id: $id }) {
       name
       price
+      category
       description
       id
       photo {
@@ -57,6 +58,7 @@ export default function SingleProduct({ id }) {
       <div className="details">
         <h2>{Product.name}</h2>
         <p>{Product.description}</p>
+        <p>{Product.category}</p>
       </div>
     </ProductStyles>
   );

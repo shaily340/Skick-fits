@@ -11,6 +11,7 @@ const SINGLE_PRODUCT_QUERY = gql`
       name
       description
       price
+      category
     }
   }
 `;
@@ -21,15 +22,17 @@ const UPDATE_PRODUCT_MUTATION = gql`
     $name: String
     $description: String
     $price: Int
+    $category: String
   ) {
     updateProduct(
       id: $id
-      data: { name: $name, description: $description, price: $price }
+      data: { name: $name, description: $description, price: $price, category: $category }
     ) {
       id
       name
       description
       price
+      category
     }
   }
 `;
@@ -50,6 +53,7 @@ export default function UpdateProduct({ id }) {
       name: '',
       description: '',
       price: '',
+      category: '',
     }
   );
   console.log(inputs);
@@ -65,6 +69,7 @@ export default function UpdateProduct({ id }) {
             name: inputs.name,
             description: inputs.description,
             price: inputs.price,
+            category: inputs.category,
           },
         }).catch(console.error);
         console.log(res);
@@ -112,7 +117,17 @@ export default function UpdateProduct({ id }) {
             onChange={handleChange}
           />
         </label>
-
+        <label htmlFor="Category">
+          Category
+          <select id="category" name="category" placeholder="Category" value={inputs.category}
+          onChange={handleChange} >
+            <option value="garments">Garments</option>
+            <option value="home-decor">Home Decor</option>
+            <option value="electronics">Electronics</option>
+            <option value="accessories">Accessories</option>
+            <option value="automobile">Automobile</option>
+          </select>
+        </label>
         <button type="submit">Update Product</button>
       </fieldset>
     </Form>
